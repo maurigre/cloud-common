@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+  workflow_dispatch: # on-demand/manual triggering
+
+jobs:
+  compile:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+        java: [ 8, 11, 17, 21 ]
+        distro: [ 'zulu' ]
+    runs-on: ${{ matrix.os }}
+    name: Java ${{ matrix.java }} (${{ matrix.distro }} @ ${{ matrix.os }}) compile
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup JDK ${{ matrix.java }} (${{ matrix.distro }} @ ${{ matrix.os }})
+      uses: actions/setup-java@v4
+      with:
+        distribution: ${{ matrix.distro }}
+        java-version: ${{ matrix.java }}
+    - name: Compile
+      run: mvn -B compile
+
+  build:
+    runs-on: ubuntu-latest
+    needs: compile
+    name: Build project
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup JDK 8
+      uses: actions/setup-java@v4
+      with:
+        distribution: zulu
+        java-package: jdk
+        java-version: 8
+    - name: Cache Maven packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+    - name: Maven version
+      run: mvn -v
+    - name: Build with Maven
+      run: mvn -B package
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: pubsub-annotation
+        path: |
+          target/*.jar
+          !target/original-*.jar
