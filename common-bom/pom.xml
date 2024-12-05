@@ -2,28 +2,40 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>io.github.mgr.cloud</groupId>
-    <artifactId>cloud-common</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
 
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.github.mgr.cloud</groupId>
   <artifactId>common-bom</artifactId>
   <version>1.0.0</version>
+  <packaging>pom</packaging>
 
   <properties>
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <git.commit.plugin>4.9.9</git.commit.plugin>
-    <spring.checkstyle.plugin>0.0.34</spring.checkstyle.plugin>
-    <cloud.common.version>${project.version}</cloud.common.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <spring-boot.version>3.4.0</spring-boot.version>
+    <spring-cloud.version>2024.0.0</spring-cloud.version>
+    <google-cloud.version>26.50.0</google-cloud.version>
+    <jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
+    <commons-lang3.version>3.17.0</commons-lang3.version>
+    <feign-core.version>13.5</feign-core.version>
+    <lombok.version>1.18.36</lombok.version>
+    <google-cloud-pubsub.version>1.134.2</google-cloud-pubsub.version>
+    <spring-framework-bom.version>6.2.0</spring-framework-bom.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-framework-bom</artifactId>
+        <version>${spring-framework-bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
@@ -45,46 +57,49 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-    </dependencies>
-  </dependencyManagement>
 
-    <dependencies>
       <!-- Spring Boot -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter</artifactId>
+        <version>${spring-boot.version}</version>
       </dependency>
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-validation</artifactId>
+        <version>${spring-boot.version}</version>
       </dependency>
-
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-aop</artifactId>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.retry</groupId>
-        <artifactId>spring-retry</artifactId>
+        <version>${spring-boot.version}</version>
       </dependency>
 
       <!-- Feign Client -->
       <dependency>
         <groupId>jakarta.validation</groupId>
         <artifactId>jakarta.validation-api</artifactId>
+        <version>${jakarta.validation-api.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
+        <version>${commons-lang3.version}</version>
+
       </dependency>
       <dependency>
         <groupId>io.github.openfeign</groupId>
         <artifactId>feign-core</artifactId>
+        <version>${feign-core.version}</version>
       </dependency>
       <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>google-cloud-pubsub</artifactId>
+        <version>${google-cloud-pubsub.version}</version>
+
       </dependency>
+
+      <!-- Custom Libraries -->
       <dependency>
         <groupId>io.github.mgr.cloud</groupId>
         <artifactId>feign-retry-annotation</artifactId>
@@ -96,6 +111,7 @@
         <version>${cloud.common.version}</version>
       </dependency>
     </dependencies>
+  </dependencyManagement>
 
 </project>
 
