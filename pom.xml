@@ -15,6 +15,12 @@
     <java.version>21</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <sonar.projectKey>maurigre_cloud-common</sonar.projectKey>
+    <sonar.organization>maurigre</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
     <spring-boot-maven-plugin.version>3.4.0</spring-boot-maven-plugin.version>
   </properties>
 
@@ -101,18 +107,6 @@
 
 	<build>
 		<plugins>
-      <plugin>
-        <groupId>org.owasp</groupId>
-        <artifactId>dependency-check-maven</artifactId>
-        <version>8.0.0</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -126,6 +120,17 @@
 					</excludes>
 				</configuration>
 			</plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <showDeprecation>false</showDeprecation>
+          <showWarnings>true</showWarnings>
+        </configuration>
+      </plugin>
 		</plugins>
 	</build>
 
