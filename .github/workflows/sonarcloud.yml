@@ -47,5 +47,6 @@ jobs:
           args: >
             -Dsonar.projectKey=maurigre_cloud-common
             -Dsonar.organization=maurigre
-            -Dsonar.login=c6fdd07d9adbdfe5abb83f1cd352a6c0225e8605
             -Dsonar.host.url=https://sonarcloud.io
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
