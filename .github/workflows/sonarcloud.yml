@@ -13,43 +13,33 @@ on:
       - 'docs/**'
 
 jobs:
-  build:
+  sonarcloud:
+    name: SonarCloud Analysis
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Set up JDK 21
-        uses: actions/setup-java@v3
         with:
-          java-version: '21'
-          distribution: 'temurin'
-
-      - name: Cache Maven Dependencies
-        uses: actions/cache@v3
+          fetch-depth: 0
+      - name: Setup JDK
+        uses: actions/setup-java@v4
         with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-
-      - name: Clear Maven Cache
-        run: mvn dependency:purge-local-repository -DactTransitively=false -Dverbose=true
-
-      - name: Build with Maven
-        run: mvn clean install
-
-      - name: Debug SONAR_TOKEN
-        run: echo "SONAR_TOKEN is ${{ secrets.SONAR_TOKEN }}"
-
-      - name: SonarCloud Analysis
-        uses: sonarsource/sonarcloud-github-action@v1
+          distribution: temurin
+          java-version: 21
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v4
         with:
-          projectBaseDir: .
-          args: >
-            -Dsonar.projectKey=maurigre_cloud-common
-            -Dsonar.organization=maurigre
-            -Dsonar.host.url=https://sonarcloud.io
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Build and analyze
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:5.0.0.4389:sonar -Dsonar.projectKey=maurigre_cloud-common
