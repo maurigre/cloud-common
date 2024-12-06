@@ -36,6 +36,9 @@ public class PubSubListenerRegister implements SmartInitializingSingleton {
     private final List<Subscriber> subscribers = new ArrayList<>();
     private final AtomicReference<String> basePackageAtomicReference = new AtomicReference<>();
 
+
+
+
     @Override
     public void afterSingletonsInstantiated() {
         registerPubSubListeners();
@@ -125,8 +128,7 @@ public class PubSubListenerRegister implements SmartInitializingSingleton {
 
     private String resolveProperty(String property) {
         if (StringUtils.isBlank(property)) {
-            log.error("[pubsub-listener-register] Property is blank or null");
-            throw new IllegalArgumentException("[pubsub-listener-register] Property is blank or null");
+            throw new IllegalArgumentException("[pubsub-listener-register] Property subscription is blank or null");
         }
 
         if (property.startsWith("${") && property.endsWith("}")) {
@@ -135,7 +137,6 @@ public class PubSubListenerRegister implements SmartInitializingSingleton {
         }
 
         if (StringUtils.isBlank(property)) {
-            log.error("[pubsub-listener-register] Error resolving property subscription: {}", property);
             throw new IllegalArgumentException("[pubsub-listener-register] Error resolving property subscription: " + property);
         }
 

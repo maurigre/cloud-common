@@ -29,7 +29,9 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
+
+    - name: Build using Maven
+      run: mvn clean package -DskipTests
+
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3

@@ -1,4 +1,4 @@
-package io.github.mgr.cloud.feign.feign.config;
+package io.github.mgr.cloud.common.feign.config;
 
 
 import feign.RetryableException;
