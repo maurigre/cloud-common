@@ -1,6 +1,11 @@
 
 # Cloud Integration Library
 
+[![build status](https://img.shields.io/github/actions/workflow/status/maurigre/cloud-common/maven.yml?branch=main&label=build&color=18BA91&style=flat-square)](https://github.com/maurigre/cloud-common/actions/workflows/maven.yml)
+[![release](https://img.shields.io/github/v/release/maurigre/cloud-common?label=release&color=18BA91&style=flat-square)](https://github.com/maurigre/cloud-common/releases/latest)
+![downloads](https://img.shields.io/github/downloads/maurigre/cloud-common/total?color=18BA91&style=flat-square)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?color=18BA91&style=flat-square)](CONTRIBUTING.md)
+
 This project, developed in **Java 21**, implements a library that facilitates the development of integrations with cloud services, using custom annotations. It provides a simplified interface for communication with **Google Pub/Sub** and implements retry mechanisms for **Feign** calls, optimizing the reliability and robustness of applications.
 
 ## Features
