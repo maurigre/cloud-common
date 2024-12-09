@@ -18,7 +18,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <spring-boot.version>3.4.0</spring-boot.version>
     <spring-cloud.version>2024.0.0</spring-cloud.version>
-    <google-cloud.version>26.50.0</google-cloud.version>
+    <google-cloud.version>26.51.0</google-cloud.version>
     <jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
     <commons-lang3.version>3.17.0</commons-lang3.version>
     <feign-core.version>13.5</feign-core.version>
