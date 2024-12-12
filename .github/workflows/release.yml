@@ -37,4 +37,5 @@ jobs:
           generate_release_notes: true
           fail_on_unmatched_files: true
           files: |
+            target/feign-retry-annotation-*.jar
             target/pubsub-annotation-*.jar

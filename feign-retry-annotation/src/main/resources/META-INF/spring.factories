@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-io.github.mgr.cloud.common.feign.FeignRetryAutoConfiguration
+io.github.maurigre.cloud.common.feign.FeignRetryAutoConfiguration

@@ -5,7 +5,7 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.mgr.cloud</groupId>
+  <groupId>io.github.maurigre.cloud</groupId>
   <artifactId>common-bom</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
@@ -25,6 +25,7 @@
     <lombok.version>1.18.36</lombok.version>
     <google-cloud-pubsub.version>1.134.2</google-cloud-pubsub.version>
     <spring-framework-bom.version>6.2.0</spring-framework-bom.version>
+
   </properties>
 
   <dependencyManagement>
@@ -101,12 +102,12 @@
 
       <!-- Custom Libraries -->
       <dependency>
-        <groupId>io.github.mgr.cloud</groupId>
+        <groupId>io.github.maurigre.cloud</groupId>
         <artifactId>feign-retry-annotation</artifactId>
         <version>${cloud.common.version}</version>
       </dependency>
       <dependency>
-        <groupId>io.github.mgr.cloud</groupId>
+        <groupId>io.github.maurigre.cloud</groupId>
         <artifactId>pubsub-annotation</artifactId>
         <version>${cloud.common.version}</version>
       </dependency>

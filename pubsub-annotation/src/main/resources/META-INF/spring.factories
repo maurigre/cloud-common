@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-io.github.mgr.cloud.common.pubsub.PubsubAutoConfiguration
+io.github.maurigre.cloud.common.pubsub.PubsubAutoConfiguration

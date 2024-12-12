@@ -1,9 +1,9 @@
-package io.github.mgr.cloud.common.feign.config;
+package io.github.maurigre.cloud.common.feign.config;
 
 
 import feign.RetryableException;
-import io.github.mgr.cloud.common.feign.annotations.Backoff;
-import io.github.mgr.cloud.common.feign.annotations.FeignRetry;
+import io.github.maurigre.cloud.common.feign.annotations.Backoff;
+import io.github.maurigre.cloud.common.feign.annotations.FeignRetry;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +25,9 @@ import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 
+/**
+ * The type Feign retry aspect.
+ */
 @Aspect
 public class FeignRetryAspect {
 
@@ -32,10 +35,24 @@ public class FeignRetryAspect {
     private static final String RETRY_API_COUNT = "retry-api-count";
     private final Environment environment;
 
+    /**
+     * Instantiates a new Feign retry aspect.
+     *
+     * @param environment the environment
+     */
     public FeignRetryAspect(Environment environment) {
         this.environment = environment;
     }
 
+
+    /**
+     * Retry object.
+     *
+     * @param joinPoint  the join point
+     * @param feignRetry the feign retry
+     * @return the object
+     * @throws Throwable the throwable
+     */
     @Around("@annotation(feignRetry)")
     public Object retry(ProceedingJoinPoint joinPoint, FeignRetry feignRetry) throws Throwable {
         final Method method = getCurrentMethod(joinPoint);
