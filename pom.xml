@@ -5,7 +5,7 @@
 
   <groupId>io.github.maurigre.cloud</groupId>
   <artifactId>cloud-common</artifactId>
-  <version>1.0.0</version>
+  <version>-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <description>Java 21 library that facilitates integrations with Pub/Sub and FeignRetry, using annotations to simplify development and error handling.</description>
@@ -55,6 +55,17 @@
 		<developerConnection>scm:git:https://github.com/maurigre/cloud-common.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
+
+  <distributionManagement>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 
 	<issueManagement>
 		<system>GitHub Issues</system>

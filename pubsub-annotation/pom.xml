@@ -7,12 +7,12 @@
 <parent>
   <groupId>io.github.maurigre.cloud</groupId>
   <artifactId>cloud-common</artifactId>
-  <version>1.0.0</version>
+  <version>-SNAPSHOT</version>
   <relativePath>../pom.xml</relativePath>
 </parent>
 
   <artifactId>pubsub-annotation</artifactId>
-  <version>1.0.0</version>
+  <version>-SNAPSHOT</version>
 
   <properties>
     <maven.compiler.source>21</maven.compiler.source>

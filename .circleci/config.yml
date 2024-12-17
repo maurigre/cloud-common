@@ -41,12 +41,12 @@ commands:
           name: 'Configure GPG keys'
           command: |
             echo -e "$GPG_KEY" | gpg --batch --no-tty --import --yes
-#  nexus-deploy:
-#    steps:
-#      - run:
-#          name: 'Deploy to Maven Central'
-#          command: |
-#            ./mvnw -ntp -nsu -s .circleci/settings.xml -P release -DskipTests=true deploy
+  nexus-deploy:
+    steps:
+      - run:
+          name: 'Deploy to Maven Central'
+          command: |
+            ./mvnw -ntp -nsu -s .circleci/settings.xml -P release -DskipTests=true deploy
 
 # Job defaults
 defaults: &defaults
@@ -80,11 +80,6 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - run:
-          name: "Debug GPG Key"
-          command: |
-            echo -e "$GPG_KEY"
-      - configure-gpg
       - restore_cache:
           keys:
             - cloud-common-dependencies-v1-{{ checksum "pom.xml" }}
@@ -97,7 +92,7 @@ jobs:
       - run:
           name: 'Run Tests'
           command: |
-            ./mvnw -ntp -B verify
+            ./mvnw -ntp -B verify -Dgpg.skip=true
       - verify-formatting
 
   deploy:
@@ -112,7 +107,7 @@ jobs:
             - cloud-common-dependencies-v1-
       - resolve-dependencies
       - configure-gpg
-#      - nexus-deploy
+      - nexus-deploy
 
 workflows:
   version: 2
@@ -122,25 +117,25 @@ workflows:
           name: 'Pull Request Build'
           filters:
             <<: *all-branches
-#
-#  snapshot:
-#    jobs:
-#      - test:
-#          name: 'Snapshot Build'
-#          filters:
-#            <<: *main-only
-#      - deploy:
-#          name: 'Deploy Snapshot'
-#          requires:
-#            - 'Snapshot Build'
-#          context: Sonatype
-#          filters:
-#            <<: *main-only
-#
-#  release:
-#    jobs:
-#      - deploy:
-#          name: 'Release to Maven Central'
-#          context: Sonatype
-#          filters:
-#            <<: *tags-only
+
+  snapshot:
+    jobs:
+      - test:
+          name: 'Snapshot Build'
+          filters:
+            <<: *main-only
+      - deploy:
+          name: 'Deploy Snapshot'
+          requires:
+            - 'Snapshot Build'
+          context: Sonatype
+          filters:
+            <<: *main-only
+
+  release:
+    jobs:
+      - deploy:
+          name: 'Release to Maven Central'
+          context: Sonatype
+          filters:
+            <<: *tags-only
