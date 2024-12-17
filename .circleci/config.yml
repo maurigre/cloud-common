@@ -80,6 +80,10 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - run:
+          name: "Debug GPG Key"
+          command: |
+            echo "$GPG_KEY"
       - configure-gpg
       - restore_cache:
           keys:
