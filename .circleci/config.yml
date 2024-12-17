@@ -28,7 +28,7 @@ commands:
       - run:
           name: 'Resolving Dependencies'
           command: |
-            mvn -ntp dependency:resolve-plugins dependency:go-offline -DskipTests=true -B
+            ./mvnw -ntp dependency:resolve-plugins dependency:go-offline -DskipTests=true -B
   verify-formatting:
     steps:
       - run:
@@ -46,7 +46,7 @@ commands:
 #      - run:
 #          name: 'Deploy to Maven Central'
 #          command: |
-#            mvn -ntp -nsu -s .circleci/settings.xml -P release -DskipTests=true deploy
+#            ./mvnw -ntp -nsu -s .circleci/settings.xml -P release -DskipTests=true deploy
 
 # Job defaults
 defaults: &defaults
@@ -92,7 +92,7 @@ jobs:
       - run:
           name: 'Run Tests'
           command: |
-            mvn -ntp -B verify
+            ./mvnw -ntp -B verify
       - verify-formatting
 
   deploy:
