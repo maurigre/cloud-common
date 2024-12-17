@@ -83,7 +83,7 @@ jobs:
       - run:
           name: "Debug GPG Key"
           command: |
-            echo "$GPG_KEY"
+            echo -e "$GPG_KEY" | base64 --decode
       - configure-gpg
       - restore_cache:
           keys:
