@@ -40,7 +40,7 @@ commands:
       - run:
           name: 'Configure GPG keys'
           command: |
-            echo -e "$GPG_KEY" | base64 --decode | gpg --batch --no-tty --import --yes
+            echo -e "$GPG_KEY" | gpg --batch --no-tty --import --yes
 #  nexus-deploy:
 #    steps:
 #      - run:
@@ -83,7 +83,7 @@ jobs:
       - run:
           name: "Debug GPG Key"
           command: |
-            echo -e "$GPG_KEY" | base64 --decode
+            echo -e "$GPG_KEY"
       - configure-gpg
       - restore_cache:
           keys:
