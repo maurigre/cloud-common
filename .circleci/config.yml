@@ -80,6 +80,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - configure-gpg
       - restore_cache:
           keys:
             - cloud-common-dependencies-v1-{{ checksum "pom.xml" }}
