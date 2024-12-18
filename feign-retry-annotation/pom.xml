@@ -7,12 +7,12 @@
   <parent>
     <groupId>io.github.maurigre.cloud</groupId>
     <artifactId>cloud-common</artifactId>
-    <version>-SNAPSHOT</version>
+    <version>1.0.0</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>feign-retry-annotation</artifactId>
-  <version>-SNAPSHOT</version>
+  <version>1.0.0</version>
 
   <properties>
     <maven.compiler.source>21</maven.compiler.source>

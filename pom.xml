@@ -5,7 +5,7 @@
 
   <groupId>io.github.maurigre.cloud</groupId>
   <artifactId>cloud-common</artifactId>
-  <version>-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>pom</packaging>
 
   <description>Java 21 library that facilitates integrations with Pub/Sub and FeignRetry, using annotations to simplify development and error handling.</description>
