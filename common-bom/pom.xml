@@ -24,7 +24,7 @@
     <feign-core.version>13.5</feign-core.version>
     <lombok.version>1.18.36</lombok.version>
     <google-cloud-pubsub.version>1.134.2</google-cloud-pubsub.version>
-    <spring-framework-bom.version>6.2.0</spring-framework-bom.version>
+    <spring-framework-bom.version>6.2.1</spring-framework-bom.version>
 
   </properties>
 
