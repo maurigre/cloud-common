@@ -21,9 +21,9 @@ This project, developed in **Java 21**, implements a library that facilitates th
 ## Requirements
 
 - **Java 21**: This project requires Java 21 to run.
-- **Spring Boot**: This project was developed on top of v3.3.3 of Spring Boot.
-- **Spring Cloud**: This project was developed on top of v2023.0.3 of Spring Cloud.
-- **Google Cloud**: This project was developed on top of v26.44.0 of Google Cloud.
+- **Spring Boot**: This project was developed on top of v3.4.0 of Spring Boot.
+- **Spring Cloud**: This project was developed on top of v2024.0.0 of Spring Cloud.
+- **Google Cloud**: This project was developed on top of v26.51.0 of Google Cloud.
 - **Maven**: Used as a build system to manage dependencies and plugins.
 
 ## Installation
@@ -55,21 +55,21 @@ Add the following dependencies to your `pom.xml`:
 <dependencies>
     <!-- Feign and Pub/Sub -->
     <dependency>
-        <groupId>io.github.mgr.cloud</groupId>
+        <groupId>io.github.maurigre.cloud</groupId>
         <artifactId>common-bom</artifactId>
         <version>1.0.0</version>
     </dependency>
 
     <!-- Feign -->
     <dependency>
-        <groupId>io.github.mgr.cloud</groupId>
+        <groupId>io.github.maurigre.cloud</groupId>
         <artifactId>feign-retry-annotation</artifactId>
         <version>1.0.0</version>
     </dependency>
 
     <!-- Pub/Sub -->
     <dependency>
-        <groupId>io.github.mgr.cloud</groupId>
+        <groupId>io.github.maurigre.cloud</groupId>
         <artifactId>pubsub-annotation</artifactId>
         <version>1.0.0</version>
     </dependency>

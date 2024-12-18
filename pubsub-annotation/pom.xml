@@ -5,7 +5,7 @@
 <modelVersion>4.0.0</modelVersion>
 
 <parent>
-  <groupId>io.github.mgr.cloud</groupId>
+  <groupId>io.github.maurigre.cloud</groupId>
   <artifactId>cloud-common</artifactId>
   <version>1.0.0</version>
   <relativePath>../pom.xml</relativePath>
